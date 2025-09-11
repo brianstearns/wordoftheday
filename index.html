@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Word of the Day</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="word-card">
+    <div class="word" id="word">Loading...</div>
+    <div class="definition" id="definition"></div>
+    <div class="example" id="example"></div>
+  </div>
+
+  <script>
+    fetch("/api/proxy")
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('word').textContent = data.word || 'No word found.';
+        document.getElementById('definition').textContent = data.definition || 'No definition found.';
+        document.getElementById('example').textContent = data.example || '';
+      })
+      .catch(err => {
+        console.error(err);
+        document.getElementById('word').textContent = 'Error loading word.';
+      });
+  </script>
+</body>
+</html>
