@@ -1,121 +1,98 @@
-    body {
-      /* font-family: -apple-system, BlinkMacSystemFont, sans-serif; */
-      background: #f8f9fa;
-      padding: 2rem;
-      color: #333;
-    }
-    .word-card {
-      background: blue green, yellow;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      padding: 2rem;
-      max-width: 500px;
-      margin: auto;
-      text-align: center;
-      background-color: blue green, yellow;
-    }
-    .word {
-      font-size: 3rem;
-      font-weight: bold;
-      font-family: -apple-system, system-ui, BlinkMacSystemFont;
-    }
-    .definition {
-      margin-top: 1rem;
-      font-size: 1.1rem;
-      font-family: -apple-system, system-ui, BlinkMacSystemFont;
-
-    }
-    .example {
-      margin-top: 1rem;
-      font-style: italic;
-      color: #555;
-    }
-
-    .word-card {
-    margin: auto;
-    overflow: auto;
-    background: linear-gradient(315deg, rgb(185, 81, 178) 3%, rgba(60,132,206,1) 38%, rgba(48,238,226,1) 68%, rgba(255,25,25,1) 98%);
-    animation: gradient 15s ease infinite;
-    background-size: 400% 400%;
-    background-attachment: fixed;
-    }
-
-@keyframes gradient {
-    0% {
-        background-position: 0% 0%;
-    }
-    50% {
-        background-position: 100% 100%;
-    }
-    100% {
-        background-position: 0% 0%;
-    }
-}
-
-.wave {
-    background: rgb(255 255 255 / 25%);
-    border-radius: 1000% 1000% 0 0;
-    position: fixed;
-    width: 200%;
-    height: 12em;
-    animation: wave 10s -3s linear infinite;
-    transform: translate3d(0, 0, 0);
-    opacity: 0.8;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-}
-
-.wave:nth-of-type(2) {
-    bottom: -1.25em;
-    animation: wave 18s linear reverse infinite;
-    opacity: 0.8;
-}
-
-.wave:nth-of-type(3) {
-    bottom: -2.5em;
-    animation: wave 20s -1s reverse infinite;
-    opacity: 0.9;
-}
-
-@keyframes wave {
-    2% {
-        transform: translateX(1);
-    }
-
-    25% {
-        transform: translateX(-25%);
-    }
-
-    50% {
-        transform: translateX(-50%);
-    }
-
-    75% {
-        transform: translateX(-25%);
-    }
-
-    100% {
-        transform: translateX(1);
-    }
-}
-
-
-@import url("https://fonts.googleapis.com/css?family=Montserrat:900");
-
-*, *::before, *::after {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background-color: #292e27;
-  color: #fff;
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  overflow: clip;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #f7f9fc;
+  color: #222;
+  line-height: 1.6;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+/* Date */
+.date {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.date-flex {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.date-svg {
+  color: #6c63ff;
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.todayTitle {
+  font-size: 2rem;
+  color: #111;
+  margin-bottom: 0.3rem;
+}
+
+.todayPhrase {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+/* Card Base */
+.word-card,
+.example-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.word-card:hover,
+.example-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Word */
+.word {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #6c63ff;
+  margin-bottom: 0.5rem;
+}
+
+.definition {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Example */
+.example-card h4 {
+  font-size: 1.2rem;
+  color: #444;
+  margin-bottom: 0.5rem;
+}
+
+.example {
+  font-size: 1rem;
+  font-style: italic;
+  color: #555;
+}
