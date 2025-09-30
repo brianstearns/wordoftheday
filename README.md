@@ -18,8 +18,7 @@ A responsive, interactive web application that displays a daily word with its de
 
 ## Live Demo
 
-🔗 [Word of the Day]([https://wordoftheday-gray.vercel.app/])
-
+🔗 [Word of the Day](https://wordoftheday-gray.vercel.app)
 ---
 
 ## Technologies Used
