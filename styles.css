@@ -157,7 +157,7 @@ header {
 }
 
 .save-btn:hover {
-  background: #48a163;
+  background: #7def9f;
   transform: scale(1.05);
 }
 
@@ -176,7 +176,7 @@ header {
 }
 
 .delete-btn {
-  margin-right: 0.5rem;
+  margin-left: 0.5rem;
   background: transparent;
   border: none;
   color: #e74c3c;

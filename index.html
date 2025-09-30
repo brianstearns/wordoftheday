@@ -36,13 +36,13 @@
 
   <!-- Example Card -->
   <section class="example-card">
-    <h4>Example</h4>
+    <h4>Example:</h4>
     <p class="example" id="example">Loading example...</p>
   </section>
 
   <!-- Favorites List -->
   <section class="favorites-card">
-    <h4>⭐ Favorites</h4>
+    <h4>Favorites</h4>
     <ul id="favoritesList"></ul>
   </section>
 
@@ -105,7 +105,7 @@
       document.getElementById('word').textContent = word || 'No word found.';
       document.getElementById('definition').textContent = data.definition || 'No definition found.';
       document.getElementById('example').textContent = data.example || 'No example available.';
-
+      
       document.getElementById("saveFavorite").addEventListener("click", () => saveWord(word));
     })
     .catch(err => {
