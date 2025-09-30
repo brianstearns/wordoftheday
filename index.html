@@ -7,6 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <body>
+  <!-- Dark Mode Toggle -->
+  <button id="darkModeToggle" class="toggle-btn">🌙</button>
+
   <!-- Date -->
   <div class="date">
     <span class="date-flex">
@@ -28,6 +31,7 @@
   <section class="word-card">
     <h3 class="word" id="word">Loading...</h3>
     <p class="definition" id="definition">Fetching definition...</p>
+    <button id="saveFavorite" class="save-btn">Save to Favorites</button>
   </section>
 
   <!-- Example Card -->
@@ -36,24 +40,82 @@
     <p class="example" id="example">Loading example...</p>
   </section>
 
-  <script>
-    // Display today's date
-    const options = { weekday: 'long', month: 'long', day: 'numeric' };
-    document.getElementById('date').textContent = new Date().toLocaleDateString(undefined, options);
+  <!-- Favorites List -->
+  <section class="favorites-card">
+    <h4>⭐ Favorites</h4>
+    <ul id="favoritesList"></ul>
+  </section>
 
-    // Fetch word data
-    fetch("/api/proxy")
-      .then(response => response.json())
-      .then(data => {
-        let word = data.word[0].toUpperCase() + data.word.slice(1);
-        document.getElementById('word').textContent = word || 'No word found.';
-        document.getElementById('definition').textContent = data.definition || 'No definition found.';
-        document.getElementById('example').textContent = data.example || 'No example available.';
-      })
-      .catch(err => {
-        console.error(err);
-        document.getElementById('word').textContent = 'Error loading word.';
+  <script>
+  // Show today's date
+  const options = { weekday: 'long', month: 'long', day: 'numeric' };
+  document.getElementById('date').textContent = new Date().toLocaleDateString(undefined, options);
+
+  // Dark mode toggle
+  const darkToggle = document.getElementById("darkModeToggle");
+  darkToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    localStorage.setItem("darkMode", document.body.classList.contains("dark"));
+  });
+
+  if (localStorage.getItem("darkMode") === "true") {
+    document.body.classList.add("dark");
+  }
+
+  // Favorites system
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  const favoritesList = document.getElementById("favoritesList");
+
+  function renderFavorites() {
+    favoritesList.innerHTML = "";
+    favorites.forEach((word, index) => {
+      const li = document.createElement("li");
+      li.textContent = word;
+
+      // Delete button
+      const delBtn = document.createElement("button");
+      delBtn.textContent = "❌";
+      delBtn.classList.add("delete-btn");
+      delBtn.addEventListener("click", () => {
+        if (confirm(`Remove "${word}" from favorites?`)) {
+          favorites.splice(index, 1);
+          localStorage.setItem("favorites", JSON.stringify(favorites));
+          renderFavorites();
+        }
       });
-  </script>
+
+      li.appendChild(delBtn);
+      favoritesList.appendChild(li);
+    });
+  }
+
+  function saveWord(word) {
+    if (!favorites.includes(word)) {
+      favorites.push(word);
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+      renderFavorites();
+    }
+  }
+
+  // Fetch word data
+  fetch("/api/proxy")
+    .then(response => response.json())
+    .then(data => {
+      let word = data.word[0].toUpperCase() + data.word.slice(1);
+      document.getElementById('word').textContent = word || 'No word found.';
+      document.getElementById('definition').textContent = data.definition || 'No definition found.';
+      document.getElementById('example').textContent = data.example || 'No example available.';
+
+      document.getElementById("saveFavorite").addEventListener("click", () => saveWord(word));
+    })
+    .catch(err => {
+      console.error(err);
+      document.getElementById('word').textContent = 'Error loading word.';
+    });
+
+  // Render saved favorites on load
+  renderFavorites();
+</script>
+
 </body>
 </html>
