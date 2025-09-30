@@ -188,3 +188,7 @@ header {
 .delete-btn:hover {
   transform: scale(1.2);
 }
+
+.dark-svg {
+  color: #60c87f;
+}
