@@ -33,6 +33,8 @@ A responsive, interactive web application that displays a daily word with its de
 
 ## Installation
 
+# Desktop
+
 1. Clone the repository:  
    ```bash
    git clone https://github.com/brianstearns/wordoftheday
@@ -50,6 +52,11 @@ A responsive, interactive web application that displays a daily word with its de
    ```bash
    node server.js
    ```
+# Mobile
+
+1. Navigate to 🔗 [Word of the Day](https://wordoftheday-gray.vercel.app)
+2. Hit share, make sure web app is turned on.
+3. Hit add to home screen.
 
 ---
 
