@@ -30,4 +30,4 @@ A responsive, interactive web application that displays a daily word with its de
 
 1. Clone the repository:  
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/brianstearns/wordoftheday
