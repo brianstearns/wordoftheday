@@ -33,7 +33,7 @@ A responsive, interactive web application that displays a daily word with its de
 
 ## Installation
 
-# Desktop
+### Desktop
 
 1. Clone the repository:  
    ```bash
@@ -52,7 +52,7 @@ A responsive, interactive web application that displays a daily word with its de
    ```bash
    node server.js
    ```
-# Mobile
+### Mobile
 
 1. Navigate to 🔗 [Word of the Day](https://wordoftheday-gray.vercel.app)
 2. Hit share, make sure web app is turned on.
